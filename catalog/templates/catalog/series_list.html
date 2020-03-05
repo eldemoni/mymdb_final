@@ -1,0 +1,21 @@
+{% extends "base_generic.html" %}
+
+{% block title %}<title>Series List</title>{% endblock %}
+
+{% block content %}
+    <h1>Series List</h1>
+
+    {% if series_list %}
+    <ul>
+      {% for series in series_list %}
+      <li>
+        <a href="{{ series.get_absolute_url }}"><img src='{{ series.poster }}' height="80" width="50"/> {{ series.title }} <p></p></a>
+      </li>
+      {% endfor %}
+    </ul>
+
+    {% else %}
+      <p>There are no series in the database.</p>
+      
+    {% endif %}       
+{% endblock %}

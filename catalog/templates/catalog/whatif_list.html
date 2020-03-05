@@ -1,0 +1,28 @@
+{% extends "base_generic.html" %}
+
+{% block title %}<title>What If List</title>{% endblock %}
+
+{% block content %}
+    {% if user.is_authenticated %}
+    <a href="{% url 'what-if' %}"><h4>Write your What If</h4></a>
+    {% endif %}
+
+    <h1>What If List</h1>
+
+    {% if whatif_list %}
+    <dl>
+
+      {% for whatif in whatif_list %}
+      <dt>-<a href="{{whatif.get_absolute_url}}"><img src='{{ whatif.movie.poster }}' height="80" width="50"/> {{ whatif.movie }}</dt> 
+
+      <dd>{{ whatif.what_if }}</dd>
+      <p>by {{whatif.by}}</p>
+      <i class="fas fa-thumbs-up" id="like"></i>{{whatif.likes.count}}
+      <i class="fas fa-thumbs-down" id="dislike"></i>{{whatif.dislikes.count}}
+      <p>.</p>
+      <p></p></a>
+      {% endfor %}
+
+    {% endif %}
+
+{% endblock %}

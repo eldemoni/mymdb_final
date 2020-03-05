@@ -1,0 +1,39 @@
+{% extends "base_generic.html" %}
+
+{% block title %}<title>{{director}}</title>{% endblock %}
+
+{% block content %}
+  <div class='page-header'>
+  <h1>{{director.first_name}} {{ director.last_name }}</h1>
+  <h6><em>(Director)</em></h6>
+  <p><img src='{{ director.picture }}' height="270" width="190"/></p>
+  {% if director.date_of_birth %}
+  <strong>Born:</strong> {{ director.date_of_birth }} 
+  {% endif %}
+
+  {% if director.date_of_death %}
+  <strong>Died:</strong> {{ director.date_of_death }}
+  {% endif %}
+  </div>
+
+  {% if director.movie_set.all %}
+  <p><strong>Movies:</strong>
+  <ul>
+    {% for movie in director.movie_set.all %}
+      <li><a href="{% url 'movie-detail' movie.pk %}"><img src='{{ movie.poster }}' height="170" width="113"/> {{movie}}</a><p></p></li>
+    {% endfor %}
+  </ul>
+  </p>
+  {% endif %}
+
+  {% if director.series_set.all %}
+  <p><strong>Series:</strong>
+    <ul>
+      {% for series in director.series_set.all %}
+        <li><a href="{% url 'series-detail' series.pk %}"><img src='{{ series.poster }}' height="170" width="113"/> {{series}}</a><p></p></li>
+      {% endfor %}
+    </ul>
+  </p>
+  {% endif %}
+
+{% endblock %}

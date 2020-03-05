@@ -1,0 +1,26 @@
+{% extends "base_generic.html" %}
+
+{% block title %}<title>Genre List</title>{% endblock %}
+
+{% block content %}
+{% if genre.movie_set.all %}
+<p><strong>Movies:</strong>
+<ul>
+  {% for movie in genre.movie_set.all %}
+    <li><a href="{% url 'movie-detail' movie.pk %}"><img src='{{ movie.poster }}' height="170" width="113"/> {{movie}}</a><p></p></li>
+  {% endfor %}
+</ul>
+</p>
+{% endif %}    
+
+{% if genre.series_set.all %}
+  <p><strong>Series:</strong>
+    <ul>
+      {% for series in genre.series_set.all %}
+        <li><a href="{% url 'series-detail' series.pk %}"><img src='{{ series.poster }}' height="170" width="113"/> {{series}}</a><p></p></li>
+      {% endfor %}
+    </ul>
+  </p>
+{% endif %}
+
+{% endblock %}

@@ -1,0 +1,38 @@
+{% extends 'base_generic.html' %}
+
+{% block title %}<title>Search</title>{% endblock %}
+
+{% block content %}
+
+{% if searched %}
+    {% for searc in searched %}
+        {% for mov_ser in searc %}
+
+            {% if mov_ser.title%}
+            <li>
+                <a href="{{ mov_ser.get_absolute_url }}"><img src='{{ mov_ser.poster }}' height="80" width="50"/> {{ mov_ser.title }} <p></p></a>
+            </li> 
+
+            {% else %}
+            <li>
+                <a href="{{ mov_ser.get_absolute_url }}"><img src='{{ mov_ser.picture }}' height="80" width="50"/>  {{mov_ser.first_name}} {{ mov_ser.last_name }} <p></p></a>
+            </li>
+            
+            {%endif %}
+            
+            {{list}}
+   
+        {% endfor %}
+    {% endfor %}
+{% endif %}
+
+
+
+
+
+
+
+
+
+
+{% endblock %}

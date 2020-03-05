@@ -1,0 +1,22 @@
+{% extends "base_generic.html" %}
+
+{% block title %}<title>Actor List</title>{% endblock %}
+
+
+{% block content %}
+    <h1>Actor List</h1>
+
+    {% if actor_list %}
+    <ul>
+
+      {% for actor in actor_list %}
+      <li>
+        <a href="{{ actor.get_absolute_url }}"><img src='{{ actor.picture }}' height="30" width="20"/>  {{actor.first_name}} {{ actor.last_name }} <p></p></a>
+      </li>
+      {% endfor %}
+
+    </ul>
+    {% else %}
+      <p>There are no actors in the database.</p>
+    {% endif %}       
+{% endblock %}

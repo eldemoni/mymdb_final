@@ -1,0 +1,45 @@
+{% extends "base_generic.html" %}
+
+{% block title %}<title>{{series}}</title>{% endblock %}
+
+{% block content %}
+<div class='page-header'>
+  <h1>{{ series.title }}</h1><img src='{{ series.poster }}' height="270" width="180"/>
+
+  {% if user.is_authenticated %}
+    {% if request.user in series.saved.all %}
+    <a href="{% url 'saved-series-update' series.pk %}"><i class="fas fa-heart"></i></a>
+    {% else %}
+    <a href="{% url 'saved-series-update' series.pk %}"><i class="far fa-heart"></i></a>
+    {% endif %}
+  {% endif %}
+    
+  <strong>Favorited by:</strong> {{series.saved.all.count}} {% if series.saved.all.count == 1 %} user{% else %} users{% endif %} 
+  <p>{% for genre in series.genre.all %} {{ genre }}{% if not forloop.last %}, {% endif %}{% endfor %}</p>   
+  <p>Release date: {{ series.release_date }}</p> 
+  <p>Number of Episodes: {{ series.episodes }}</p> 
+ 
+</div>
+
+  <p class="alinear">
+  <iframe width="560" height="315" src="{{ series.trailer }}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></p>
+  <p><strong>Summary:</strong> {{ series.summary }}</p> 
+  <p><strong>Number of Episodes:</strong> {{ series.episodes }}</p> 
+
+  <p><strong>Creators:</strong>
+    <ul>
+      {% for director in series.director.all %}
+        <li><a href="{{ director.get_absolute_url }}"><img src='{{ director.picture }}' height="30" width="20"/> {{director.first_name}} {{director.last_name}}</a><p></p></li>
+      {% endfor %}
+    </ul>
+  </p>
+
+  <p><strong>Stars:</strong>
+    <ul>
+      {% for actor in series.stars.all %}
+        <li><a href="{{ actor.get_absolute_url }}"><img src='{{ actor.picture }}' height="30" width="20"/> {{actor.first_name}} {{actor.last_name}}</a><p></p></li>
+      {% endfor %}
+    </ul>
+  </p>
+
+{% endblock %}

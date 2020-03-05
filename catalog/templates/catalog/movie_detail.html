@@ -1,0 +1,34 @@
+{% extends "base_generic.html" %}
+
+{% block title %}<title>{{movie}}</title>{% endblock %}
+
+{% block content %}
+
+<div class='page-header'>
+  <h1>{{ movie.title }}</h1><img src='{{ movie.poster }}' height="270" width="180"/>
+  {% if user.is_authenticated %}
+    {% if request.user in movie.saved.all %}
+    <a href="{% url 'saved-movie-update' movie.pk %}"><i class="fas fa-heart"></i></a>
+    {% else %}
+    <a href="{% url 'saved-movie-update' movie.pk %}"><i class="far fa-heart"></i></a>
+    {% endif %}
+  {% endif %}
+
+  <strong>Favorited by:</strong> {{movie.saved.all.count}} {% if movie.saved.all.count == 1 %} user{% else %} users{% endif %}
+  <p>{% for genre in movie.genre.all %} {{ genre }}{% if not forloop.last %}, {% endif %}{% endfor %}</p>   
+  <p>Release date: {{ movie.release_date }}</p> 
+</div>
+  
+  <p class='alinear'>
+  <iframe width="560" height="315" src="{{ movie.trailer }}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></p>
+  <p><strong>Summary:</strong> {{ movie.summary }}</p> 
+  <p><strong>Director:</strong> <a href="{% url 'director-detail' movie.director.pk %}"><img src='{{ movie.director.picture }}' height="30" width="20"/> {{ movie.director.first_name }} {{ movie.director.last_name }}</a></p> 
+  <p><strong>Stars:</strong>
+  <ul>
+    {% for actor in movie.stars.all %}
+      <li><a href="{{ actor.get_absolute_url }}"><img src='{{ actor.picture }}' height="30" width="20"/> {{actor.first_name}} {{actor.last_name}}</a><p></p></li>
+    {% endfor %}
+  </ul>
+  </p>
+  
+{% endblock %}

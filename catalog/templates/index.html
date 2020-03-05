@@ -1,0 +1,65 @@
+{% extends "base_generic.html" %}
+
+{% block title %}<title>MyMDb</title>{% endblock %}
+
+{% block content %}
+
+<h1>MyMDb Home</h1>
+
+  <div id='image-data'>
+  <img src="https://www.xtrafondos.com/wallpapers/resized/casa-kame-de-dragon-ball-3963.jpg?s=large" height="300" width="570" id="data"/>
+  </div>
+
+  <script>
+    var start=1;
+    function set_time()
+    {
+      setInterval(image_show, 5000);
+      // this method will apply time interval for 1 second
+    }
+
+    function image_show()
+    {
+      var image_data;
+      if(start==1)
+      {
+        image_data="https://www.xtrafondos.com/wallpapers/resized/casa-kame-de-dragon-ball-3963.jpg?s=large"; 
+      }
+      else if(start==2)
+      {
+        image_data="https://sm.ign.com/t/ign_es/screenshot/default/s2e4-mr-poopybutthole_mp55.1280.jpg"; 
+      }
+      else if(start==3)
+      {
+        image_data="https://s4.eestatic.com/2019/10/07/cultura/cine/Joaquin_Phoenix-Batman-Comic-Estrenos_de_cine-DC_Comics-Cine_434966711_134635926_1706x960.jpg";
+      }
+      else if(start==4)
+      {
+        image_data="https://images.alphacoders.com/553/thumb-1920-55353.jpg"; 
+      }
+      else if(start==5)
+      {
+        image_data="https://images5.alphacoders.com/585/thumb-1920-585645.png"; 
+      }
+      else
+      {
+        image_data="https://www.xtrafondos.com/wallpapers/resized/casa-kame-de-dragon-ball-3963.jpg?s=large"
+        start=1;
+      }
+    document.getElementById('data').src=""+image_data;
+    start++;
+    }
+  </script>
+
+  <p>The database has the following record counts:</p>
+  <ul>
+    <li><strong><a href="{% url 'movies' %}">Movies:</a></strong> {{ num_movies }}</li>
+    <li><strong><a href="{% url 'series' %}">Series:</a></strong> {{ num_series }}</li>
+    <li><strong><a href="{% url 'directors' %}">Directors:</a></strong> {{ num_directors }}</li>
+    <li><strong><a href="{% url 'actors' %}">Actors:</a></strong> {{ num_actors }}</li>
+    <li><a href="{% url 'what-ifs' %}">What Ifs?</a></li>
+  </ul>
+
+  <p class='visits'>You have visited this page {{ num_visits }}{% if num_visits == 1 %} time{% else %} times{% endif %} since you logged in.</p>
+
+{% endblock %}

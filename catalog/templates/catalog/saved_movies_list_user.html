@@ -1,0 +1,22 @@
+{% extends "base_generic.html" %}
+
+{% block title %}<title>My Movies</title>{% endblock %}
+
+{% block content %}
+
+    <h1>My Movies</h1>
+
+    {% if movie_list %}
+    <ul>
+      {% for movie in movie_list %} 
+      <li>
+        <a href="{{ movie.get_absolute_url }}"><img src='{{ movie.poster }}' height="80" width="50"/> {{movie.title}}</a> <p></p>
+      </li>
+      {% endfor %}
+    </ul>
+
+    {% else %}
+      <p>There are no movies saved.</p>
+      
+    {% endif %}       
+{% endblock %}

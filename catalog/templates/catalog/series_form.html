@@ -1,0 +1,18 @@
+{% extends "base_generic.html" %}
+{% block title %}<title>Favourite</title>{% endblock %}
+
+{% block content %}
+
+    <p>Por ahora, selecciona tu usuario presionando la tecla <strong>CTRL</strong> (si no se eliminarán los demás guardados anteriormente)</p>
+
+
+    <form action="" method="post">
+    {% csrf_token %}
+
+    {{form.as_p}}
+    {{user.get_username}}
+
+    <input type="submit" value="Submit" />    
+    </form>
+
+{% endblock %}

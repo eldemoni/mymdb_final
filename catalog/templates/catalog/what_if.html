@@ -1,0 +1,23 @@
+{% extends "base_generic.html" %}
+
+{% block title %}<title>What If</title>{% endblock %}
+
+{% block content %}
+{% if user.is_authenticated %}
+
+<h1>What If?</h1>
+<a href="{% url 'what-ifs' %}"><strong>What If List</strong></a>
+
+<form method="POST">
+    {% csrf_token %}
+    
+    <li>Choose movie/series {{form.movie}}</li>
+    <li>What if...? {{form.what_if}}</li>
+    <li>writted by: {{form.by}}</li>
+
+    <input type="submit" value="Post">
+</form>
+
+{% endif %}
+
+{% endblock %}

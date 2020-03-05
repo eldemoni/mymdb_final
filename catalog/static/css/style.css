@@ -1,0 +1,111 @@
+header {
+    background-color: rgba(0, 0, 26, 0.89);
+    color: blanchedalmond;
+}
+
+i {
+    font-size: 2cm;
+    color: rgba(255, 0, 0, 0.719);
+}
+
+#like {
+    font-size: 5mm;
+    color: green;
+}
+
+#dislike {
+    font-size: 5mm;
+    color: red;
+}
+
+.boton, .dropbtn {
+    color: rgb(2, 1, 39);
+    background-color: rgb(211, 222, 236);
+    float: right;
+}
+
+
+.navbar ul {
+    padding-left: 235px;
+    list-style: none;
+}
+
+.navbar ul li {
+    width: 150px;
+    text-align: center;
+    float: left;
+}
+
+.navbar ul li ul li {
+    display: none;
+}
+
+.navbar ul li:hover ul li {
+    display: block;
+}
+
+.container {
+    padding-left: 50px;
+    padding-top: 16px;
+}
+
+.dropdown {
+    padding-top: 47px;
+    width: 10cm;
+}
+
+
+
+footer {
+    height: 81px;
+    position: static;
+    bottom: 0;
+    padding-left: 235px;
+    padding-top: 20px;
+    background-color: rgba(0, 0, 26, 0.89);
+    color: blanchedalmond;
+}
+.sidebar_nav {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.container {
+    height: 10vh;   
+}
+
+.input-group-list {
+    padding-right: 30px;
+}
+
+
+.login {
+    height: 70vh;
+}
+
+body {
+    color: rgb(2, 1, 39);
+    background-color: rgba(208, 208, 224, 0.945);
+    text-align: justify;
+}
+
+h1, h2 {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+h1 {
+    font-size: 3em;
+}
+
+h2 {
+    font-size: 2em;
+}
+
+p {
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: larger;
+    margin-right: 10cm;
+}
+
+details {
+    margin-right: 0mm;
+}

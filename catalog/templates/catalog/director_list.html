@@ -1,0 +1,22 @@
+{% extends "base_generic.html" %}
+
+{% block title %}<title>Director List</title>{% endblock %}
+
+{% block content %}
+
+    <h1>Director List</h1>
+
+    {% if director_list %}
+    <ul>
+      {% for director in director_list %}
+      <li>
+        <a href="{{ director.get_absolute_url }}"><img src='{{ director.picture }}' height="30" width="20"/>  {{director.first_name}} {{ director.last_name }} <p></p></a>
+      </li>
+      {% endfor %}
+    </ul>
+
+    {% else %}
+      <p>There are no directors in the database.</p>
+      
+    {% endif %}       
+{% endblock %}
